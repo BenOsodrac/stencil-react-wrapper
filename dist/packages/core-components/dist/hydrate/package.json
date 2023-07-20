@@ -1,0 +1,6 @@
+{
+  "name": "@undefined/core-components/hydrate",
+  "description": "CoreComponents component hydration app.",
+  "main": "index.js",
+  "types": "index.d.ts"
+}
