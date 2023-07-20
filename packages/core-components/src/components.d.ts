@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { alignment, border } from "./globalEnum";
+export { alignment, border } from "./globalEnum";
 export namespace Components {
     interface MyComponent {
         /**
@@ -20,6 +22,15 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface OsuiCard {
+        "alignment": alignment;
+        "backgroundcolor": string;
+        "border": border;
+        "reversecolumn": boolean;
+        "showContent": boolean;
+        "showFooter": boolean;
+        "showheader": boolean;
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +39,15 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLOsuiCardElement extends Components.OsuiCard, HTMLStencilElement {
+    }
+    var HTMLOsuiCardElement: {
+        prototype: HTMLOsuiCardElement;
+        new (): HTMLOsuiCardElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "osui-card": HTMLOsuiCardElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +65,18 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface OsuiCard {
+        "alignment"?: alignment;
+        "backgroundcolor"?: string;
+        "border"?: border;
+        "reversecolumn"?: boolean;
+        "showContent"?: boolean;
+        "showFooter"?: boolean;
+        "showheader"?: boolean;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "osui-card": OsuiCard;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +84,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "osui-card": LocalJSX.OsuiCard & JSXBase.HTMLAttributes<HTMLOsuiCardElement>;
         }
     }
 }
