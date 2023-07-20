@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {},
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
     "@nx/cypress": "16.3.0",
