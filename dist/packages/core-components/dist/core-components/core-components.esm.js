@@ -1,2 +1,2 @@
-import{p as o,b as e}from"./p-a2b94efa.js";export{s as setNonce}from"./p-a2b94efa.js";const t=()=>{const e=import.meta.url;const t={};if(e!==""){t.resourcesUrl=new URL(".",e).href}return o(t)};t().then((o=>e([["p-e5fa2ad4",[[1,"my-component",{first:[1],middle:[1],last:[1]}]]],["p-f49efa87",[[1,"osui-button"]]],["p-d9f5d6a7",[[1,"osui-card",{alignment:[1],reversecolumn:[4],border:[1],backgroundcolor:[1],showheader:[4],showContent:[4,"show-content"],showFooter:[4,"show-footer"]}]]]],o)));
+import{p as o,b as t}from"./p-89d65429.js";export{s as setNonce}from"./p-89d65429.js";const r=()=>{const s=import.meta.url;const t={};if(s!==""){t.resourcesUrl=new URL(".",s).href}return o(t)};r().then((s=>t([],s)));
 //# sourceMappingURL=core-components.esm.js.map
