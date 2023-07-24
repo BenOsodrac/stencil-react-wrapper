@@ -22,6 +22,8 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface OsuiButton {
+    }
     interface OsuiCard {
         "alignment": alignment;
         "backgroundcolor": string;
@@ -39,6 +41,12 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLOsuiButtonElement extends Components.OsuiButton, HTMLStencilElement {
+    }
+    var HTMLOsuiButtonElement: {
+        prototype: HTMLOsuiButtonElement;
+        new (): HTMLOsuiButtonElement;
+    };
     interface HTMLOsuiCardElement extends Components.OsuiCard, HTMLStencilElement {
     }
     var HTMLOsuiCardElement: {
@@ -47,6 +55,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "osui-button": HTMLOsuiButtonElement;
         "osui-card": HTMLOsuiCardElement;
     }
 }
@@ -65,6 +74,8 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface OsuiButton {
+    }
     interface OsuiCard {
         "alignment"?: alignment;
         "backgroundcolor"?: string;
@@ -76,6 +87,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "osui-button": OsuiButton;
         "osui-card": OsuiCard;
     }
 }
@@ -84,6 +96,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "osui-button": LocalJSX.OsuiButton & JSXBase.HTMLAttributes<HTMLOsuiButtonElement>;
             "osui-card": LocalJSX.OsuiCard & JSXBase.HTMLAttributes<HTMLOsuiCardElement>;
         }
     }

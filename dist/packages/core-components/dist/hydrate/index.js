@@ -5742,6 +5742,31 @@ class MyComponent {
   }; }
 }
 
+const buttonCss = "/*!@:host ion-button*/.sc-osui-button-h ion-button.sc-osui-button{--background:var(--color-primary)}";
+
+class OSUIButton {
+  constructor(hostRef) {
+    registerInstance(this, hostRef);
+  }
+  connectedCallback() {
+    console.log('My button');
+  }
+  render() {
+    return [
+      hAsync("ion-button", { expand: "full", shape: "round" }, " Custom Ionic Button")
+    ];
+  }
+  static get style() { return buttonCss; }
+  static get cmpMeta() { return {
+    "$flags$": 9,
+    "$tagName$": "osui-button",
+    "$members$": undefined,
+    "$listeners$": undefined,
+    "$lazyBundleId$": "-",
+    "$attrsToReflect$": []
+  }; }
+}
+
 /**
  * Card Enum for CSS Classes
  */
@@ -5868,6 +5893,7 @@ class OSUICard {
 
 registerComponents([
   MyComponent,
+  OSUIButton,
   OSUICard,
 ]);
 

@@ -8,7 +8,6 @@ export const config: Config = {
   namespace: 'core-components',
   taskQueue: 'async',
   sourceMap: true,
-
   extras: {
     experimentalImportInjection: true,
   },

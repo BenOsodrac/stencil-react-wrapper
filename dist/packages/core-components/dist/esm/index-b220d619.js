@@ -1596,6 +1596,10 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           return import(
             /* webpackMode: "lazy" */
             './my-component.entry.js').then(processMod, consoleError);
+        case 'osui-button':
+          return import(
+            /* webpackMode: "lazy" */
+            './osui-button.entry.js').then(processMod, consoleError);
         case 'osui-card':
           return import(
             /* webpackMode: "lazy" */

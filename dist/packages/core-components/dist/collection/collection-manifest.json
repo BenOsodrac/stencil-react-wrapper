@@ -1,5 +1,6 @@
 {
   "entries": [
+    "./components/button/button.js",
     "./components/card/card.js",
     "./components/my-component/my-component.js"
   ],
