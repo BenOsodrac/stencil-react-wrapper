@@ -4948,12 +4948,7 @@ function hydrateFactory($stencilWindow, $stencilHydrateOpts, $stencilHydrateResu
 
 
 const NAMESPACE = 'core-components';
-const BUILD = /* core-components */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, attachStyles: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: true, constructableCSS: false, cssAnnotations: true, cssVarShim: false, devTools: false, disconnectedCallback: false, dynamicImportShim: false, element: false, event: false, hasRenderFn: true, hostListener: false, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: true, hydrateServerSide: true, hydratedAttribute: false, hydratedClass: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: false, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: false, propNumber: false, propString: true, reflect: false, safari10: false, scoped: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, shadowDomShim: true, slot: true, slotChildNodesFix: false, slotRelocation: true, state: false, style: true, svg: false, taskQueue: true, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: false, vdomKey: false, vdomListener: false, vdomPropOrAttr: true, vdomRef: false, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: true };
-
-function queryNonceMetaTagContent(e) {
- var t, o, n;
- return null !== (n = null === (o = null === (t = e.head) || void 0 === t ? void 0 : t.querySelector('meta[name="csp-nonce"]')) || void 0 === o ? void 0 : o.getAttribute("content")) && void 0 !== n ? n : void 0;
-}
+const BUILD = /* core-components */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, attachStyles: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: false, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: false, cssAnnotations: true, cssVarShim: false, devTools: false, disconnectedCallback: false, dynamicImportShim: false, element: false, event: false, hasRenderFn: false, hostListener: false, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: true, hydrateServerSide: true, hydratedAttribute: false, hydratedClass: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: false, lifecycleDOMEvents: false, member: true, method: false, mode: false, observeAttribute: false, profile: false, prop: false, propBoolean: false, propMutable: false, propNumber: false, propString: false, reflect: false, safari10: false, scoped: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: false, shadowDomShim: true, slot: false, slotChildNodesFix: false, slotRelocation: true, state: false, style: false, svg: false, taskQueue: true, updatable: true, vdomAttribute: false, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: false, vdomPropOrAttr: false, vdomRef: false, vdomRender: false, vdomStyle: false, vdomText: false, vdomXlink: false, watchCallback: false };
 
 function componentOnReady() {
  return getHostRef(this).$onReadyPromise$;
@@ -5001,7 +4996,7 @@ function hydrateApp(e, t, o, n, s) {
        if (31 & l) {
         const a = s[1] || n, r = e.getAttribute(a);
         if (null != r) {
-         const e = parsePropertyValue(r, l);
+         const e = parsePropertyValue(r);
          o.$instanceValues$.set(n, e);
         }
         const i = e[n];
@@ -5010,7 +5005,7 @@ function hydrateApp(e, t, o, n, s) {
           return getValue(this, n);
          },
          set(e) {
-          setValue(this, n, e, t);
+          setValue(this, n, e);
          },
          configurable: !0,
          enumerable: !0
@@ -5137,19 +5132,7 @@ function waitingOnElementMsg(e) {
 
 const createTime = (e, t = "") => {
  return () => {};
-}, EMPTY_OBJ = {}, isComplexType = e => "object" == (e = typeof e) || "function" === e, isPromise = e => !!e && ("object" == typeof e || "function" == typeof e) && "function" == typeof e.then, h = (e, t, ...o) => {
- let n = null, l = null, a = !1, r = !1;
- const i = [], d = t => {
-  for (let o = 0; o < t.length; o++) n = t[o], Array.isArray(n) ? d(n) : null != n && "boolean" != typeof n && ((a = "function" != typeof e && !isComplexType(n)) ? n = String(n) : BUILD.isDev  , 
-  a && r ? i[i.length - 1].$text$ += n : i.push(a ? newVNode(null, n) : n), r = a);
- };
- if (d(o), t && (t.name && (l = t.name), BUILD.vdomClass)) {
-  const e = t.className || t.class;
-  e && (t.class = "object" != typeof e ? e : Object.keys(e).filter((t => e[t])).join(" "));
- }
- const c = newVNode(e, null);
- return c.$attrs$ = t, i.length > 0 && (c.$children$ = i), (c.$name$ = l), c;
-}, newVNode = (e, t) => {
+}, isComplexType = e => "object" == (e = typeof e) || "function" === e, newVNode = (e, t) => {
  const o = {
   $flags$: 0,
   $tag$: e,
@@ -5157,8 +5140,8 @@ const createTime = (e, t = "") => {
   $elm$: null,
   $children$: null
  };
- return (o.$attrs$ = null), (o.$name$ = null), o;
-}, Host = {}, isHost = e => e && e.$tag$ === Host, clientHydrate = (e, t, o, n, s, l, a) => {
+ return (o.$name$ = null), o;
+}, clientHydrate = (e, t, o, n, s, l, a) => {
  let r, i, d, c;
  if (1 === l.nodeType) {
   for (r = l.getAttribute("c-id"), r && (i = r.split("."), i[0] !== a && "0" !== i[0] || (d = {
@@ -5194,10 +5177,8 @@ const createTime = (e, t = "") => {
  }, "t" === r ? (d.$elm$ = l.nextSibling, d.$elm$ && 3 === d.$elm$.nodeType && (d.$text$ = d.$elm$.textContent, 
  t.push(d), l.remove(), e.$children$ || (e.$children$ = []), e.$children$[d.$index$] = d, 
  n && "0" === d.$depth$ && (n[d.$index$] = d.$elm$))) : d.$hostId$ === a && ("s" === r ? (d.$tag$ = "slot", 
- i[5] ? l["s-sn"] = d.$name$ = i[5] : l["s-sn"] = "", l["s-sr"] = !0, n && (d.$elm$ = doc.createElement(d.$tag$), 
- d.$name$ && d.$elm$.setAttribute("name", d.$name$), l.parentNode.insertBefore(d.$elm$, l), 
- l.remove(), "0" === d.$depth$ && (n[d.$index$] = d.$elm$)), o.push(d), e.$children$ || (e.$children$ = []), 
- e.$children$[d.$index$] = d) : "r" === r && (n ? l.remove() : (s["s-cr"] = l, 
+ i[5] ? l["s-sn"] = d.$name$ = i[5] : l["s-sn"] = "", l["s-sr"] = !0, o.push(d), e.$children$ || (e.$children$ = []), 
+ e.$children$[d.$index$] = d) : "r" === r && ((s["s-cr"] = l, 
  l["s-cn"] = !0)))); else if (e && "style" === e.$tag$) {
   const t = newVNode(null, l.textContent);
   t.$elm$ = l, t.$index$ = "0", e.$children$ = [ t ];
@@ -5211,179 +5192,12 @@ const createTime = (e, t = "") => {
   const o = e.nodeValue.split(".");
   "o" === o[0] && (t.set(o[1] + "." + o[2], e), e.nodeValue = "", e["s-en"] = o[3]);
  }
-}, parsePropertyValue = (e, t) => null == e || isComplexType(e) ? e : 4 & t ? "false" !== e && ("" === e || !!e) : 1 & t ? String(e) : e, getElement = e => getHostRef(e).$hostElement$ , emitEvent = (e, t, o) => {
+}, parsePropertyValue = (e, t) => null == e || isComplexType(e) ? e : e, emitEvent = (e, t, o) => {
  const n = plt.ce(t, o);
  return e.dispatchEvent(n), n;
-}, rootAppliedStyles = new WeakMap, registerStyle = (e, t, o) => {
- let n = styles.get(e);
- n = t, styles.set(e, n);
-}, addStyle = (e, t, o, n) => {
- var s;
- let l = getScopeId(t);
- const a = styles.get(l);
- if (e = 11 === e.nodeType ? e : doc, a) if ("string" == typeof a) {
-  e = e.head || e;
-  let o, r = rootAppliedStyles.get(e);
-  if (r || rootAppliedStyles.set(e, r = new Set), !r.has(l)) {
-   if (e.host && (o = e.querySelector(`[sty-id="${l}"]`))) o.innerHTML = a; else {
-    o = doc.createElement("style"), o.innerHTML = a;
-    const i = null !== (s = plt.$nonce$) && void 0 !== s ? s : queryNonceMetaTagContent(doc);
-    null != i && o.setAttribute("nonce", i), o.setAttribute("sty-id", l), 
-    e.insertBefore(o, e.querySelector("link"));
-   }
-   r && r.add(l);
-  }
- }
- return l;
-}, attachStyles = e => {
- const t = e.$cmpMeta$, o = e.$hostElement$, n = t.$flags$, s = createTime("attachStyles", t.$tagName$), l = addStyle(o.getRootNode(), t);
- 10 & n && (o["s-sc"] = l, 
- o.classList.add(l + "-h"), BUILD.scoped  ), 
- s();
-}, getScopeId = (e, t) => "sc-" + (e.$tagName$), setAccessor = (e, t, o, n, s, l) => {
- if (o !== n) {
-  let a = isMemberInElement(e, t); t.toLowerCase();
-  if ("class" === t) {
-   const t = e.classList, s = parseClassList(o), l = parseClassList(n);
-   t.remove(...s.filter((e => e && !l.includes(e)))), t.add(...l.filter((e => e && !s.includes(e))));
-  } else {
-   {
-    const i = isComplexType(n);
-    if ((a || i && null !== n) && !s) try {
-     if (e.tagName.includes("-")) e[t] = n; else {
-      const s = null == n ? "" : n;
-      "list" === t ? a = !1 : null != o && e[t] == s || (e[t] = s);
-     }
-    } catch (e) {}
-    null == n || !1 === n ? !1 === n && "" !== e.getAttribute(t) || (e.removeAttribute(t)) : (!a || 4 & l || s) && !i && (n = !0 === n ? "" : n, 
-    e.setAttribute(t, n));
-   }
-  }
- }
-}, parseClassListRegex = /\s/, parseClassList = e => e ? e.split(parseClassListRegex) : [], updateElement = (e, t, o, n) => {
- const s = 11 === t.$elm$.nodeType && t.$elm$.host ? t.$elm$.host : t.$elm$, l = e && e.$attrs$ || EMPTY_OBJ, a = t.$attrs$ || EMPTY_OBJ;
- for (n in l) n in a || setAccessor(s, n, l[n], void 0, o, t.$flags$);
- for (n in a) setAccessor(s, n, l[n], a[n], o, t.$flags$);
 };
 
-let scopeId, contentRef, hostTagName, useNativeShadowDom = !1, checkSlotFallbackVisibility = !1, checkSlotRelocate = !1, isSvgMode = !1;
-
-const createElm = (e, t, o, n) => {
- const s = t.$children$[o];
- let l, a, r, i = 0;
- if (!useNativeShadowDom && (checkSlotRelocate = !0, "slot" === s.$tag$ && (scopeId && n.classList.add(scopeId + "-s"), 
- s.$flags$ |= s.$children$ ? 2 : 1)), null !== s.$text$) l = s.$elm$ = doc.createTextNode(s.$text$); else if (1 & s.$flags$) l = s.$elm$ = slotReferenceDebugNode(s) ; else {
-  if (l = s.$elm$ = doc.createElement(2 & s.$flags$ ? "slot-fb" : s.$tag$), 
-  updateElement(null, s, isSvgMode), 
-  null != scopeId && l["s-si"] !== scopeId && l.classList.add(l["s-si"] = scopeId), 
-  s.$children$) for (i = 0; i < s.$children$.length; ++i) a = createElm(e, s, i, l), 
-  a && l.appendChild(a);
- }
- return (l["s-hn"] = hostTagName, 3 & s.$flags$ && (l["s-sr"] = !0, 
- l["s-cr"] = contentRef, l["s-sn"] = s.$name$ || "", r = e && e.$children$ && e.$children$[o], 
- r && r.$tag$ === s.$tag$ && e.$elm$ && putBackInOriginalLocation(e.$elm$, !1))), 
- l;
-}, putBackInOriginalLocation = (e, t) => {
- plt.$flags$ |= 1;
- const o = e.childNodes;
- for (let e = o.length - 1; e >= 0; e--) {
-  const n = o[e];
-  n["s-hn"] !== hostTagName && n["s-ol"] && (parentReferenceNode(n).insertBefore(n, referenceNode(n)), 
-  n["s-ol"].remove(), n["s-ol"] = void 0, checkSlotRelocate = !0), t && putBackInOriginalLocation(n, t);
- }
- plt.$flags$ &= -2;
-}, addVnodes = (e, t, o, n, s, l) => {
- let a, r = e["s-cr"] && e["s-cr"].parentNode || e;
- for (r.shadowRoot && r.tagName === hostTagName && (r = r.shadowRoot); s <= l; ++s) n[s] && (a = createElm(null, o, s, e), 
- a && (n[s].$elm$ = a, r.insertBefore(a, referenceNode(t) )));
-}, removeVnodes = (e, t, o) => {
- for (let n = t; n <= o; ++n) {
-  const t = e[n];
-  if (t) {
-   const e = t.$elm$;
-   e && ((checkSlotFallbackVisibility = !0, 
-   e["s-ol"] ? e["s-ol"].remove() : putBackInOriginalLocation(e, !0)), e.remove());
-  }
- }
-}, isSameVnode = (e, t) => e.$tag$ === t.$tag$ && ("slot" === e.$tag$ ? e.$name$ === t.$name$ : !BUILD.vdomKey ), referenceNode = e => e && e["s-ol"] || e, parentReferenceNode = e => (e["s-ol"] ? e["s-ol"] : e).parentNode, patch = (e, t) => {
- const o = t.$elm$ = e.$elm$, n = e.$children$, s = t.$children$, l = t.$tag$, a = t.$text$;
- let r;
- null !== a ? (r = o["s-cr"]) ? r.parentNode.textContent = a : e.$text$ !== a && (o.data = a) : (("slot" === l || updateElement(e, t, isSvgMode)), 
- null !== n && null !== s ? ((e, t, o, n) => {
-  let s, a = 0, r = 0, c = t.length - 1, $ = t[0], m = t[c], p = n.length - 1, u = n[0], h = n[p];
-  for (;a <= c && r <= p; ) if (null == $) $ = t[++a]; else if (null == m) m = t[--c]; else if (null == u) u = n[++r]; else if (null == h) h = n[--p]; else if (isSameVnode($, u)) patch($, u), 
-  $ = t[++a], u = n[++r]; else if (isSameVnode(m, h)) patch(m, h), m = t[--c], h = n[--p]; else if (isSameVnode($, h)) "slot" !== $.$tag$ && "slot" !== h.$tag$ || putBackInOriginalLocation($.$elm$.parentNode, !1), 
-  patch($, h), e.insertBefore($.$elm$, m.$elm$.nextSibling), $ = t[++a], h = n[--p]; else if (isSameVnode(m, u)) "slot" !== $.$tag$ && "slot" !== h.$tag$ || putBackInOriginalLocation(m.$elm$.parentNode, !1), 
-  patch(m, u), e.insertBefore(m.$elm$, $.$elm$), m = t[--c], u = n[++r]; else {
-   (s = createElm(t && t[r], o, r, e), u = n[++r]), 
-   s && (parentReferenceNode($.$elm$).insertBefore(s, referenceNode($.$elm$)) );
-  }
-  a > c ? addVnodes(e, null == n[p + 1] ? null : n[p + 1].$elm$, o, n, r, p) : r > p && removeVnodes(t, a, c);
- })(o, n, t, s) : null !== s ? (null !== e.$text$ && (o.textContent = ""), 
- addVnodes(o, null, t, s, 0, s.length - 1)) : null !== n && removeVnodes(n, 0, n.length - 1), 
- BUILD.svg   );
-}, updateFallbackSlotVisibility = e => {
- const t = e.childNodes;
- let o, n, s, l, a, r;
- for (n = 0, s = t.length; n < s; n++) if (o = t[n], 1 === o.nodeType) {
-  if (o["s-sr"]) for (a = o["s-sn"], o.hidden = !1, l = 0; l < s; l++) if (r = t[l].nodeType, 
-  t[l]["s-hn"] !== o["s-hn"] || "" !== a) {
-   if (1 === r && a === t[l].getAttribute("slot")) {
-    o.hidden = !0;
-    break;
-   }
-  } else if (1 === r || 3 === r && "" !== t[l].textContent.trim()) {
-   o.hidden = !0;
-   break;
-  }
-  updateFallbackSlotVisibility(o);
- }
-}, relocateNodes = [], relocateSlotContent = e => {
- let t, o, n, s, l, a, r = 0;
- const i = e.childNodes, d = i.length;
- for (;r < d; r++) {
-  if (t = i[r], t["s-sr"] && (o = t["s-cr"]) && o.parentNode) for (n = o.parentNode.childNodes, 
-  s = t["s-sn"], a = n.length - 1; a >= 0; a--) o = n[a], o["s-cn"] || o["s-nr"] || o["s-hn"] === t["s-hn"] || (isNodeLocatedInSlot(o, s) ? (l = relocateNodes.find((e => e.$nodeToRelocate$ === o)), 
-  checkSlotFallbackVisibility = !0, o["s-sn"] = o["s-sn"] || s, l ? l.$slotRefNode$ = t : relocateNodes.push({
-   $slotRefNode$: t,
-   $nodeToRelocate$: o
-  }), o["s-sr"] && relocateNodes.map((e => {
-   isNodeLocatedInSlot(e.$nodeToRelocate$, o["s-sn"]) && (l = relocateNodes.find((e => e.$nodeToRelocate$ === o)), 
-   l && !e.$slotRefNode$ && (e.$slotRefNode$ = l.$slotRefNode$));
-  }))) : relocateNodes.some((e => e.$nodeToRelocate$ === o)) || relocateNodes.push({
-   $nodeToRelocate$: o
-  }));
-  1 === t.nodeType && relocateSlotContent(t);
- }
-}, isNodeLocatedInSlot = (e, t) => 1 === e.nodeType ? null === e.getAttribute("slot") && "" === t || e.getAttribute("slot") === t : e["s-sn"] === t || "" === t, renderVdom = (e, t) => {
- const o = e.$hostElement$, s = e.$vnode$ || newVNode(null, null), l = isHost(t) ? t : h(null, null, t);
- if (hostTagName = o.tagName, BUILD.isDev  ) ;
- if (l.$tag$ = null, l.$flags$ |= 4, e.$vnode$ = l, l.$elm$ = s.$elm$ = o.shadowRoot || o, 
- (scopeId = o["s-sc"]), (contentRef = o["s-cr"], 
- useNativeShadowDom = supportsShadow, checkSlotFallbackVisibility = !1), patch(s, l), 
- BUILD.slotRelocation) {
-  if (plt.$flags$ |= 1, checkSlotRelocate) {
-   let e, t, o, n, s, a;
-   relocateSlotContent(l.$elm$);
-   let r = 0;
-   for (;r < relocateNodes.length; r++) e = relocateNodes[r], t = e.$nodeToRelocate$, 
-   t["s-ol"] || (o = originalLocationDebugNode(t) , 
-   o["s-nr"] = t, t.parentNode.insertBefore(t["s-ol"] = o, t));
-   for (r = 0; r < relocateNodes.length; r++) if (e = relocateNodes[r], t = e.$nodeToRelocate$, 
-   e.$slotRefNode$) {
-    for (n = e.$slotRefNode$.parentNode, s = e.$slotRefNode$.nextSibling, o = t["s-ol"]; o = o.previousSibling; ) if (a = o["s-nr"], 
-    a && a["s-sn"] === t["s-sn"] && n === a.parentNode && (a = a.nextSibling, !a || !a["s-nr"])) {
-     s = a;
-     break;
-    }
-    (!s && n !== t.parentNode || t.nextSibling !== s) && t !== s && (!t["s-hn"] && t["s-ol"] && (t["s-hn"] = t["s-ol"].parentNode.nodeName), 
-    n.insertBefore(t, s));
-   } else 1 === t.nodeType && (t.hidden = !0);
-  }
-  checkSlotFallbackVisibility && updateFallbackSlotVisibility(l.$elm$), plt.$flags$ &= -2, 
-  relocateNodes.length = 0;
- }
-}, slotReferenceDebugNode = e => doc.createComment(`<slot${e.$name$ ? ' name="' + e.$name$ + '"' : ""}> (host=${hostTagName.toLowerCase()})`), originalLocationDebugNode = e => doc.createComment("org-location for " + (e.localName ? `<${e.localName}> (host=${e["s-hn"]})` : `[${e.textContent}]`)), attachToAncestor = (e, t) => {
+const attachToAncestor = (e, t) => {
  t && !e.$onRenderResolve$ && t["s-p"] && t["s-p"].push(new Promise((t => e.$onRenderResolve$ = t)));
 }, scheduleUpdate = (e, t) => {
  if ((e.$flags$ |= 16), 4 & e.$flags$) return void (e.$flags$ |= 512);
@@ -5397,7 +5211,6 @@ const createElm = (e, t, o, n) => {
 }, enqueue = (e, t) => isPromisey(e) ? e.then(t) : t(), isPromisey = e => e instanceof Promise || e && e.then && "function" == typeof e.then, updateComponent = async (e, t, o) => {
  var n;
  const s = e.$hostElement$, l = createTime("update", e.$cmpMeta$.$tagName$), a = s["s-rc"];
- o && attachStyles(e);
  const r = createTime("render", e.$cmpMeta$.$tagName$);
  if (await callRender(e, t) , 
  BUILD.hydrateServerSide) try {
@@ -5415,9 +5228,7 @@ const createElm = (e, t, o, n) => {
 const callRender = (e, t, o) => {
  try {
   if (t = t.render(), (e.$flags$ &= -17), 
-  (e.$flags$ |= 2), BUILD.hasRenderFn ) {
-   return Promise.resolve(t).then((t => renderVdom(e, t)));
-  }
+  (e.$flags$ |= 2), BUILD.reflect) ;
  } catch (t) {
   consoleError(t, e.$hostElement$);
  }
@@ -5434,12 +5245,6 @@ const callRender = (e, t, o) => {
    namespace: NAMESPACE
   }
  }))), BUILD.profile  ;
-}, safeCall = (e, t, o) => {
- if (e && e[t]) try {
-  return e[t](o);
- } catch (e) {
-  consoleError(e);
- }
 }, addHydratedFlag = e => e.classList.add("hydrated") , serverSideConnected = e => {
  const t = e.children;
  if (null != t) for (let e = 0, o = t.length; e < o; e++) {
@@ -5447,53 +5252,20 @@ const callRender = (e, t, o) => {
   "function" == typeof o.connectedCallback && o.connectedCallback(), serverSideConnected(o);
  }
 }, getValue = (e, t) => getHostRef(e).$instanceValues$.get(t), setValue = (e, t, o, n) => {
- const s = getHostRef(e), l = s.$hostElement$ , a = s.$instanceValues$.get(t), r = s.$flags$, i = s.$lazyInstance$ ;
- o = parsePropertyValue(o, n.$members$[t][0]);
+ const s = getHostRef(e), a = s.$instanceValues$.get(t), r = s.$flags$, i = s.$lazyInstance$ ;
+ o = parsePropertyValue(o);
  const d = Number.isNaN(a) && Number.isNaN(o), c = o !== a && !d;
  if ((!(8 & r) || void 0 === a) && c && (s.$instanceValues$.set(t, o), 
  i)) {
-  if (n.$watchers$ && 128 & r) {
-   const e = n.$watchers$[t];
-   e && e.map((e => {
-    try {
-     i[e](o, a, t);
-    } catch (e) {
-     consoleError(e, l);
-    }
-   }));
-  }
   if (2 == (18 & r)) {
    scheduleUpdate(s, !1);
   }
  }
 }, proxyComponent = (e, t, o) => {
  if (t.$members$) {
-  e.watchers && (t.$watchers$ = e.watchers);
-  const n = Object.entries(t.$members$), s = e.prototype;
+  const n = Object.entries(t.$members$);
   if (n.map((([e, [n]]) => {
-   (31 & n || (2 & o) && 32 & n) ? Object.defineProperty(s, e, {
-    get() {
-     return getValue(this, e);
-    },
-    set(s) {
-     setValue(this, e, s, t);
-    },
-    configurable: !0,
-    enumerable: !0
-   }) : BUILD.method   ;
-  })), (1 & o)) {
-   const o = new Map;
-   s.attributeChangedCallback = function(e, t, n) {
-    plt.jmp((() => {
-     const t = o.get(e);
-     if (this.hasOwnProperty(t)) n = this[t], delete this[t]; else if (s.hasOwnProperty(t) && "number" == typeof this[t] && this[t] == n) return;
-     this[t] = (null !== n || "boolean" != typeof this[t]) && n;
-    }));
-   }, e.observedAttributes = n.filter((([e, t]) => 15 & t[0])).map((([e, n]) => {
-    const s = n[1] || e;
-    return o.set(s, e), s;
-   }));
-  }
+  })), BUILD.observeAttribute ) ;
  }
  return e;
 }, initializeComponent = async (e, t, o, n, s) => {
@@ -5503,8 +5275,7 @@ const callRender = (e, t, o) => {
     const e = (() => {});
     s = await s, e();
    }
-   !s.isProxied && ((o.$watchers$ = s.watchers), 
-   proxyComponent(s, o, 2), s.isProxied = !0);
+   !s.isProxied && (proxyComponent(s, o), s.isProxied = !0);
    const e = createTime("createInstance", o.$tagName$);
    (t.$flags$ |= 8);
    try {
@@ -5512,37 +5283,26 @@ const callRender = (e, t, o) => {
    } catch (e) {
     consoleError(e);
    }
-   (t.$flags$ &= -9), (t.$flags$ |= 128), e(), 
-   fireConnectedCallback(t.$lazyInstance$);
-  }
-  if (s.style) {
-   let n = s.style;
-   const l = getScopeId(o);
-   if (!styles.has(l)) {
-    const e = createTime("registerStyles", o.$tagName$);
-    registerStyle(l, n), e();
-   }
+   (t.$flags$ &= -9), e(), 
+   fireConnectedCallback();
   }
  }
  const r = t.$ancestorComponent$, i = () => scheduleUpdate(t, !0);
  r && r["s-rc"] ? r["s-rc"].push(i) : i();
 }, fireConnectedCallback = e => {
- safeCall(e, "connectedCallback");
 }, connectedCallback = e => {
  if (0 == (1 & plt.$flags$)) {
   const t = getHostRef(e), o = t.$cmpMeta$, n = createTime("connectedCallback", o.$tagName$);
-  if (1 & t.$flags$) fireConnectedCallback(t.$lazyInstance$); else {
+  if (1 & t.$flags$) ; else {
    let n;
    if (t.$flags$ |= 1, (n = e.getAttribute("s-id"), n)) {
     ((e, t, o, n) => {
-     const s = createTime("hydrateClient", t), l = e.shadowRoot, a = [], r = l ? [] : null, i = n.$vnode$ = newVNode(t, null);
+     const s = createTime("hydrateClient", t), l = e.shadowRoot, a = [], r = null, i = n.$vnode$ = newVNode(t, null);
      plt.$orgLocNodes$ || initializeDocumentHydrate(doc.body, plt.$orgLocNodes$ = new Map), 
      e["s-id"] = o, e.removeAttribute("s-id"), clientHydrate(i, a, [], r, e, e, o), a.map((e => {
       const o = e.$hostId$ + "." + e.$nodeId$, n = plt.$orgLocNodes$.get(o), s = e.$elm$;
       n && supportsShadow && "" === n["s-en"] && n.parentNode.insertBefore(s, n.nextSibling), 
       l || (s["s-hn"] = t, n && (s["s-ol"] = n, s["s-ol"]["s-nr"] = s)), plt.$orgLocNodes$.delete(o);
-     })), l && r.map((e => {
-      e && l.appendChild(e);
      })), s();
     })(e, o.$tagName$, n, t);
    }
@@ -5636,12 +5396,6 @@ const callRender = (e, t, o) => {
    insertChildVNodeAnnotations(e, t, o, n, l, s);
   }));
  }
-}, hAsync = (e, t, ...o) => {
- if (Array.isArray(o) && o.length > 0) {
-  const n = o.flat(1 / 0);
-  return n.some(isPromise) ? Promise.all(n).then((o => h(e, t, ...o))).catch((o => h(e, t))) : h(e, t, ...o);
- }
- return h(e, t);
 }, NO_HYDRATE_TAGS = new Set([ "CODE", "HEAD", "IFRAME", "INPUT", "OBJECT", "OUTPUT", "NOSCRIPT", "PRE", "SCRIPT", "SELECT", "STYLE", "TEMPLATE", "TEXTAREA" ]);
 
 const cmpModules = new Map, getModule = e => {
@@ -5651,17 +5405,7 @@ const cmpModules = new Map, getModule = e => {
   if (null != t) return t[e];
  }
  return null;
-}, loadModule = (e, t, o) => getModule(e.$tagName$), isMemberInElement = (e, t) => {
- if (null != e) {
-  if (t in e) return !0;
-  const o = getModule(e.nodeName);
-  if (null != o) {
-   const e = o;
-   if (null != e && null != e.cmpMeta && null != e.cmpMeta.$members$) return t in e.cmpMeta.$members$;
-  }
- }
- return !1;
-}, registerComponents = e => {
+}, loadModule = (e, t, o) => getModule(e.$tagName$), registerComponents = e => {
  for (const t of e) {
   const e = t.cmpMeta.$tagName$;
   cmpModules.set(e, {
@@ -5686,7 +5430,7 @@ const cmpModules = new Map, getModule = e => {
  ael: (e, t, o, n) => e.addEventListener(t, o, n),
  rel: (e, t, o, n) => e.removeEventListener(t, o, n),
  ce: (e, t) => new win.CustomEvent(e, t)
-}, supportsShadow = !1, hostRefs = new WeakMap, getHostRef = e => hostRefs.get(e), registerInstance = (e, t) => hostRefs.set(t.$lazyInstance$ = e, t), registerHost = (e, t) => {
+}, supportsShadow = !1, hostRefs = new WeakMap, getHostRef = e => hostRefs.get(e), registerHost = (e, t) => {
  const o = {
   $flags$: 0,
   $cmpMeta$: t,
@@ -5696,205 +5440,9 @@ const cmpModules = new Map, getModule = e => {
  };
  return o.$onInstancePromise$ = new Promise((e => o.$onInstanceResolve$ = e)), o.$onReadyPromise$ = new Promise((e => o.$onReadyResolve$ = e)), 
  e["s-p"] = [], e["s-rc"] = [], hostRefs.set(e, o);
-}, styles = new Map;
-
-function format(first, middle, last) {
-  return ((first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : ''));
-}
-function setStyleAttribute(element, cssProperty, ruleValue) {
-  if (element) {
-    if (cssProperty !== '' && ruleValue !== undefined) {
-      element.style.setProperty(cssProperty, ruleValue.toString());
-    }
-  }
-  else {
-    throw Error(`The element does not exist, when trying to apply the rule '${cssProperty}'.`);
-  }
-}
-
-const myComponentCss = "/*!@:host*/.sc-my-component-h{display:block}";
-
-class MyComponent {
-  constructor(hostRef) {
-    registerInstance(this, hostRef);
-    this.first = undefined;
-    this.middle = undefined;
-    this.last = undefined;
-  }
-  getText() {
-    return format(this.first, this.middle, this.last);
-  }
-  render() {
-    return hAsync("div", null, "Hello, World! I'm ", this.getText());
-  }
-  static get style() { return myComponentCss; }
-  static get cmpMeta() { return {
-    "$flags$": 9,
-    "$tagName$": "my-component",
-    "$members$": {
-      "first": [1],
-      "middle": [1],
-      "last": [1]
-    },
-    "$listeners$": undefined,
-    "$lazyBundleId$": "-",
-    "$attrsToReflect$": []
-  }; }
-}
-
-const buttonCss = "/*!@:host ion-button*/.sc-osui-button-h ion-button.sc-osui-button{--background:var(--color-primary)}";
-
-class OSUIButton {
-  constructor(hostRef) {
-    registerInstance(this, hostRef);
-  }
-  connectedCallback() {
-    console.log('My button');
-  }
-  render() {
-    return [
-      hAsync("ion-button", { expand: "full", shape: "round" }, " Custom Ionic Button")
-    ];
-  }
-  static get style() { return buttonCss; }
-  static get cmpMeta() { return {
-    "$flags$": 9,
-    "$tagName$": "osui-button",
-    "$members$": undefined,
-    "$listeners$": undefined,
-    "$lazyBundleId$": "-",
-    "$attrsToReflect$": []
-  }; }
-}
-
-/**
- * Card Enum for CSS Classes
- */
-var CssClass;
-(function (CssClass) {
-  CssClass["Pattern"] = "osui-card";
-  CssClass["Modifier"] = "osui-card--is-";
-  CssClass["HeaderOverlay"] = "osui-card--is-overlay-";
-  CssClass["HorizontalAlignment"] = "osui-card--is-horizontal";
-  CssClass["VerticalAlignment"] = "osui-card--is-vertical";
-  CssClass["IsReverseColumn"] = "osui-card--is-reverse-column";
-  CssClass["ShowHeader"] = "osui-card--is-show-header";
-  CssClass["ShowContent"] = "osui-card--is-show-content";
-  CssClass["ShowFooter"] = "osui-card--is-show-footer";
-  CssClass["BackgroundCover"] = "osui-card--is-background-cover";
-})(CssClass || (CssClass = {}));
-/**
- * Card CSS Variables
- */
-var CssCustomProperties;
-(function (CssCustomProperties) {
-  CssCustomProperties["BackgroundColor"] = "--osui-card-background-color";
-  CssCustomProperties["Border"] = "--osui-card-border-radius";
-  CssCustomProperties["ImageURL"] = "--osui-card-image-url";
-  CssCustomProperties["Position"] = "--osui-card-background-postion";
-})(CssCustomProperties || (CssCustomProperties = {}));
-/**
- * Card Properties
- */
-var Properties;
-(function (Properties) {
-  Properties["Alignment"] = "alignment";
-  Properties["Border"] = "border";
-  Properties["ReverseColumns"] = "reverseColumns";
-  Properties["ShowContent"] = "showContent";
-  Properties["ShowFooter"] = "showFooter";
-  Properties["ShowHeader"] = "showHeader";
-  Properties["BackgroundColor"] = "backgroundColor";
-})(Properties || (Properties = {}));
-
-const cardCss = "/*!@:host*/.sc-osui-card-h{--border-radius-rounded:16px;--osui-card-background-color:var(--color-neutral-0);--osui-card-border-radius:var(--border-radius-soft);--osui-card-grid-template:\"header\"\n                             \"content\"\n                             \"footer\";background-color:var(--osui-card-background-color);background-image:var(--osui-card-image-url);background-repeat:no-repeat;border-radius:var(--osui-card-border-radius);display:grid;grid-template-areas:var(--osui-card-grid-template);grid-template-columns:minmax(auto, 1fr);height:100%;overflow:hidden}/*!@:host(.osui-card--is-horizontal)*/.osui-card--is-horizontal.sc-osui-card-h{--osui-card-grid-template:\"header content\"\n                             \"footer content\"}/*!@:host(.osui-card--is-horizontal.osui-card--is-reverse-column)*/.osui-card--is-horizontal.osui-card--is-reverse-column.sc-osui-card-h{--osui-card-grid-template:\"content header\"\n                             \"content footer\"}/*!@:host(:not(.osui-card--is-show-header))*/.sc-osui-card-h:not(.osui-card--is-show-header){--osui-card-grid-template:\"content\"\n                              \"footer\"}/*!@:host(:not(.osui-card--is-show-header).osui-card--is-horizontal)*/.sc-osui-card-h:not(.osui-card--is-show-header).osui-card--is-horizontal{--osui-card-grid-template:\"content footer\"}/*!@:host(:not(.osui-card--is-show-header).osui-card--is-horizontal.osui-card--is-reverse-column)*/.sc-osui-card-h:not(.osui-card--is-show-header).osui-card--is-horizontal.osui-card--is-reverse-column{--osui-card-grid-template:\"footer content\"}/*!@:host(:not(.osui-card--is-show-header)) .osui-card__header*/.sc-osui-card-h:not(.osui-card--is-show-header) .osui-card__header.sc-osui-card{display:none}/*!@.osui-card__header,\n.osui-card__footer*/.osui-card__header.sc-osui-card,.osui-card__footer.sc-osui-card{padding:var(--space-base)}/*!@.osui-card__header*/.osui-card__header.sc-osui-card{grid-area:header}/*!@.osui-card__content*/.osui-card__content.sc-osui-card{grid-area:content}/*!@.osui-card__footer*/.osui-card__footer.sc-osui-card{grid-area:footer}";
-
-class OSUICard {
-  constructor(hostRef) {
-    registerInstance(this, hostRef);
-    this.alignment = undefined;
-    this.reversecolumn = undefined;
-    this.border = undefined;
-    this.backgroundcolor = undefined;
-    this.showheader = undefined;
-    this.showContent = undefined;
-    this.showFooter = undefined;
-  }
-  alignmentChanged(newValue, oldValue) {
-    if (oldValue !== undefined) {
-      this.selfElement.classList.remove(CssClass.Modifier + oldValue);
-    }
-    else {
-      this.selfElement.classList.add(CssClass.Modifier + newValue);
-    }
-  }
-  reverseColumnChanged(newValue) {
-    if (newValue === false) {
-      this.selfElement.classList.remove(CssClass.IsReverseColumn);
-    }
-    else {
-      this.selfElement.classList.add(CssClass.IsReverseColumn);
-    }
-  }
-  borderChanged(newValue) {
-    setStyleAttribute(this.selfElement, CssCustomProperties.Border, `var(--border-radius-${newValue})`);
-  }
-  backgroundChanged(newValue) {
-    setStyleAttribute(this.selfElement, CssCustomProperties.BackgroundColor, newValue);
-  }
-  reverseShowHeaderChanged(newValue) {
-    if (newValue === false) {
-      this.selfElement.classList.remove(CssClass.ShowHeader);
-    }
-    else {
-      this.selfElement.classList.add(CssClass.ShowHeader);
-    }
-  }
-  connectedCallback() {
-    this.alignmentChanged(this.alignment);
-    this.reverseColumnChanged(this.reversecolumn);
-    this.borderChanged(this.border);
-    this.backgroundChanged(this.backgroundcolor);
-    this.reverseShowHeaderChanged(this.showheader);
-  }
-  render() {
-    return [
-      hAsync("header", { class: 'osui-card__header', part: 'header' }, hAsync("slot", { name: 'header' }, "Insert Your Header")),
-      hAsync("div", { class: 'osui-card__content', part: 'content' }, hAsync("slot", { name: 'content' }, "Insert Your Content")),
-      hAsync("footer", { class: 'osui-card__footer', part: 'footer' }, hAsync("slot", { name: 'footer' }, "Insert Your Footer Content"))
-    ];
-  }
-  get selfElement() { return getElement(this); }
-  static get watchers() { return {
-    "alignment": ["alignmentChanged"],
-    "reversecolumn": ["reverseColumnChanged"],
-    "border": ["borderChanged"],
-    "backgroundcolor": ["backgroundChanged"],
-    "showheader": ["reverseShowHeaderChanged"]
-  }; }
-  static get style() { return cardCss; }
-  static get cmpMeta() { return {
-    "$flags$": 9,
-    "$tagName$": "osui-card",
-    "$members$": {
-      "alignment": [1],
-      "reversecolumn": [4],
-      "border": [1],
-      "backgroundcolor": [1],
-      "showheader": [4],
-      "showContent": [4, "show-content"],
-      "showFooter": [4, "show-footer"]
-    },
-    "$listeners$": undefined,
-    "$lazyBundleId$": "-",
-    "$attrsToReflect$": []
-  }; }
-}
+};
 
 registerComponents([
-  MyComponent,
-  OSUIButton,
-  OSUICard,
 ]);
 
 exports.hydrateApp = hydrateApp;

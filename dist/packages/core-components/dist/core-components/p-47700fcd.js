@@ -1,2 +1,0 @@
-function e(e,n,t){return(e||"")+(n?` ${n}`:"")+(t?` ${t}`:"")}function n(e,n,t){if(e){if(n!==""&&t!==undefined){e.style.setProperty(n,t.toString())}}else{throw Error(`The element does not exist, when trying to apply the rule '${n}'.`)}}export{e as f,n as s};
-//# sourceMappingURL=p-47700fcd.js.map
