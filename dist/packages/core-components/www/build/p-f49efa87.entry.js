@@ -1,0 +1,2 @@
+import{r as o,h as t}from"./p-a2b94efa.js";const n=":host ion-button{--background:var(--color-primary)}";const r=class{constructor(t){o(this,t)}connectedCallback(){console.log("My button")}render(){return[t("ion-button",{expand:"full",shape:"round"}," Custom Ionic Button")]}};r.style=n;export{r as osui_button};
+//# sourceMappingURL=p-f49efa87.entry.js.map

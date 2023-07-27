@@ -10,30 +10,20 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "outsystems-stencil": [
-        "dist/components"
+      "@undefined/core-components": ["dist/packages/core-components"],
+      "@undefined/core-components/*": [
+        "dist/packages/core-components/dist/components/*"
       ],
-      "outsystems-stencil/dist/components/*": [
-        "dist/components/*"
+      "@undefined/core-components/loader": [
+        "dist/packages/core-components/loader"
       ],
-      "outsystems-stencil/loader": [
-        "./loader"
-      ],
-      "core-components-react": [
-        "packages/core-components-react/src/index.ts"
-      ]
+      "core-components-react": ["packages/core-components-react/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

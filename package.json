@@ -2,9 +2,7 @@
   "name": "nx-stencil",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "update-osui": "npm install  outsystems-stencil@latest"
-  },
+  "scripts": {},
   "private": false,
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
@@ -68,7 +66,6 @@
     "@ionic/react": "^7.2.0",
     "@nx/storybook": "^16.3.0",
     "@swc/helpers": "~0.5.0",
-    "outsystems-stencil": "^0.2.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.3.0"
