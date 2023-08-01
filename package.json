@@ -1,6 +1,6 @@
 {
-  "name": "outsystems-react-stencil-wrappers",
-  "version": "1.0.1",
+  "name": "outsystems-react-wrappers",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "update-osui": "npm install outsystems-stencil@latest",
