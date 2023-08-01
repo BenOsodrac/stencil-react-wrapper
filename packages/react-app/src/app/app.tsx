@@ -1,6 +1,6 @@
 import { OsuiButton, OsuiCard } from 'core-components-react';
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { alignment, border } from '../../../core-components/src/globalEnum';
+import { alignment, border } from '../../../globalEnum';
 import './../styles.scss';
 import { setupIonicReact } from '@ionic/react';
 
