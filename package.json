@@ -1,10 +1,14 @@
 {
   "name": "outsystems-react-stencil-wrappers",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "license": "MIT",
   "scripts": {
     "update-osui": "npm install outsystems-stencil@latest",
     "dev": "nx serve react-app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenOsodrac/stencil-react-wrapper"
   },
   "private": false,
   "devDependencies": {
