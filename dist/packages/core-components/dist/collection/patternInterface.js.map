@@ -1,0 +1,1 @@
+{"version":3,"file":"patternInterface.js","sourceRoot":"","sources":["../../../../src/patternInterface.ts"],"names":[],"mappings":"","sourcesContent":["export interface IPattern {\n    selfElement: HTMLElement;\n}"]}

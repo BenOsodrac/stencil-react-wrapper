@@ -32,7 +32,7 @@ export const config = {
       includeGlobalScripts: false,
     },
     reactOutputTarget({
-      componentCorePackage: 'outsystems-stencil',
+      componentCorePackage: '@undefined/core-components',
       proxiesFile: '../../../packages/core-components-react/src/generated/components.ts',
       includeDefineCustomElements: true,
     }),
