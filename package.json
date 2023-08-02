@@ -1,6 +1,6 @@
 {
   "name": "outsystems-react-wrappers",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "license": "MIT",
   "scripts": {
     "update-osui": "npm install outsystems-stencil@latest",
@@ -72,7 +72,7 @@
     "@ionic/core": "^7.2.0",
     "@ionic/react": "^7.2.0",
     "@swc/helpers": "~0.5.0",
-    "outsystems-stencil": "^0.5.1",
+    "outsystems-ui-stencil": "^1.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.3.0"

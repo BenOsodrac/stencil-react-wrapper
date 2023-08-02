@@ -3,9 +3,9 @@
 /* auto-generated react proxies */
 import { createReactComponent } from './react-component-lib';
 
-import type { JSX } from 'outsystems-stencil';
+import type { JSX } from 'outsystems-ui-stencil';
 
-import { defineCustomElements } from 'outsystems-stencil/loader';
+import { defineCustomElements } from 'outsystems-ui-stencil/loader';
 
 defineCustomElements();
 export const OsuiButton = /*@__PURE__*/createReactComponent<JSX.OsuiButton, HTMLOsuiButtonElement>('osui-button');
