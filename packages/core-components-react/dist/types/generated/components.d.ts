@@ -1,0 +1,6 @@
+/// <reference types="react" />
+import type { JSX } from 'outsystems-ui-stencil';
+export declare const OsuiButton: import("react").ForwardRefExoticComponent<JSX.OsuiButton & Omit<import("react").HTMLAttributes<HTMLOsuiButtonElement>, "style"> & import("./react-component-lib/interfaces").StyleReactProps & import("react").RefAttributes<HTMLOsuiButtonElement>>;
+export declare const OsuiCard: import("react").ForwardRefExoticComponent<JSX.OsuiCard & Omit<import("react").HTMLAttributes<HTMLOsuiCardElement>, "style"> & import("./react-component-lib/interfaces").StyleReactProps & import("react").RefAttributes<HTMLOsuiCardElement>>;
+export declare const OsuiRangeSlider: import("react").ForwardRefExoticComponent<JSX.OsuiRangeSlider & Omit<import("react").HTMLAttributes<HTMLOsuiRangeSliderElement>, "style"> & import("./react-component-lib/interfaces").StyleReactProps & import("react").RefAttributes<HTMLOsuiRangeSliderElement>>;
+export declare const OsuiRating: import("react").ForwardRefExoticComponent<JSX.OsuiRating & Omit<import("react").HTMLAttributes<HTMLOsuiRatingElement>, "style"> & import("./react-component-lib/interfaces").StyleReactProps & import("react").RefAttributes<HTMLOsuiRatingElement>>;
