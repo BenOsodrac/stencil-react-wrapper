@@ -1,7 +1,10 @@
 {
   "name": "outsystems-react-wrappers",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
+  "main": "dist/packages/core-components/dist/index.js",
+  "module": "dist/packages/core-components/dist/index.js",
+  "types": "dist/packages/core-components/dist/types/index.d.ts",
   "scripts": {
     "update-osui": "npm install outsystems-stencil@latest",
     "dev": "nx serve react-app"
